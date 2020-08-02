@@ -1,0 +1,21 @@
+@media screen and (min-width: 576px){
+    .info-item {
+        border-right: 1px solid black;
+    }
+}
+@media screen and (max-width: 575px){
+    .info-item {
+        border-bottom: 1px solid black;
+    }
+}
+.info-title{
+    font-size: 18px;
+    font-weight: 700;
+    color: #384158;
+}
+a.btn{
+    color: white !important;
+}
+.detail-info{
+    font-size: 15px;
+}

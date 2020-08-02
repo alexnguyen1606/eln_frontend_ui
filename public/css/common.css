@@ -1,0 +1,62 @@
+.bg-light.pre-header{
+     background-color: white !important; 
+
+}
+a{
+    color: black !important;
+}
+a:hover{
+    text-decoration: none !important;
+    color: rgb(252, 176, 25) !important;
+}
+.item {
+  transition: box-shadow .3s;
+  border-radius:10px;
+  border: 1px solid #ccc;
+  background: #fff;
+  float: left;
+}
+.card-footer{
+    background-color: white !important;
+    color: inherit;
+}
+.item:hover{
+    box-shadow: 0 1px 11px rgb(252, 176, 25);; 
+}
+.bg-gray{
+    background-color: #ECECEC;
+}
+.pre-header{
+   
+
+}
+.title-intro{
+    color: rgb(252, 176, 25);
+}
+.course-price {
+    font-size: 20px;
+    font-weight: 400;
+    color: #14bdee;
+}
+.card-title{
+    color: rgb(252, 176, 25);
+
+}
+.icon{
+    margin-right: 10px;
+}
+.active{
+    /* border-bottom: 2px solid rgb(252, 176, 25); */
+    color: rgb(252, 176, 25) !important;
+}
+.active-bread-crumb{
+    color: rgb(252, 176, 25) !important;
+}
+.navbar-brand{
+    margin: 10px 10px;
+}
+.logo-image{
+    max-width: 120px;
+    max-height: 80px;
+    margin-top: -20px;
+}
