@@ -48,6 +48,15 @@ a:hover{
 .active{
     /* border-bottom: 2px solid rgb(252, 176, 25); */
     color: rgb(252, 176, 25) !important;
+    
+}
+.active2{
+    color: black !important;
+}
+.list-group-item.active{
+    color: rgb(252, 176, 25) !important;
+    background-color:white !important;
+    border-color: white !important;
 }
 .active-bread-crumb{
     color: rgb(252, 176, 25) !important;

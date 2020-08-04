@@ -1,32 +1,44 @@
 import React, { Component, Fragment } from 'react';
 import ItemCourse from './ItemCourse';
-import { NavLink, Link } from 'react-router-dom'
+import { withRouter } from 'react-router-dom'
 import HomeBreadCrumb from '../common/HomeBreadCrumb';
 import { create } from './../../apis/RootApi'
 import Category from './Category';
 
-class Course extends Component {
+class CourseCategory extends Component {
     constructor(props) {
         super(props);
         this.state = {
             listCourse: [],
-            categoryId: null,
-            dataSearch: {}
+            categoryId: this.props.match.params.id,
+            dataSearch: {
+                categoryId: this.props.match.params.id
+            }
+        }
+    }
+    componentDidUpdate(prevProps, prevState) {
+        let { match } = this.props;
+        if (match.params.id !== prevProps.match.params.id) {
+            this.setState({
+                dataSearch: { categoryId: match.params.id }
+            })
+
+            this.loadData();
         }
     }
     componentDidMount() {
         this.loadData();
     }
     loadData = () => {
-        create("/api/course", this.state.dataSearch).then((res) => {
+        create("/api/course/course-category", this.state.dataSearch).then((res) => {
             let data = res.data.data;
-            console.log(data);
             this.setState({ listCourse: data });
         })
             .catch((error) => {
                 console.log("error", error);
             });
     }
+
     showCourse = () => {
         let result = null
         if (this.state.listCourse.length != 0) {
@@ -34,10 +46,9 @@ class Course extends Component {
                 return <ItemCourse course={item} key={i}></ItemCourse>
             })
         }
-        return ""
+        return <p>Không có khóa học</p>
 
     }
-
     render() {
         return (
             <Fragment>
@@ -62,4 +73,4 @@ class Course extends Component {
     }
 }
 
-export default Course;
+export default withRouter(CourseCategory);

@@ -9,6 +9,8 @@ import Support from '../components/support/Support';
 import CourseDetail from '../components/Course/CourseDetail';
 import CompetitionDetail from '../components/Competition/CompetitionDetail';
 import NewsDetail from '../components/News/NewsDetail';
+import CourseCategory from '../components/Course/CourseCategory';
+import CourseLearning from '../components/Course/CourseLearning';
 
 const route = [
     {
@@ -19,7 +21,7 @@ const route = [
     {
         path: "/course",
         exact: true,
-        main: () => <Course></Course>
+        main: ({ match }) => <Course match={match}></Course>
     },
     {
         path: "/competition",
@@ -45,7 +47,7 @@ const route = [
         exact: true,
         main: () => <Support></Support>
     }, {
-        path: "/course/detail/:id",
+        path: "/course/detail/:slug.:id.html",
         exact: false,
         main: () => <CourseDetail></CourseDetail>
     },
@@ -58,6 +60,16 @@ const route = [
         path: "/news/detail/:id",
         exact: false,
         main: () => <NewsDetail></NewsDetail>
+    },
+    {
+        path: "/course/category/:slug.:id.html",
+        exact: false,
+        main: () => <CourseCategory ></CourseCategory>
+    },
+    {
+        path: "/course/learning/:id",
+        exact: false,
+        main: () => <CourseLearning></CourseLearning>
     }
 ]
 export default route
