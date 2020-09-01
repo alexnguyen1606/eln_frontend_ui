@@ -1,13 +1,9 @@
-import React, { Component } from 'react';
+import React from 'react'
 
-class Alert extends Component {
-    render() {
-        return (
-            <div>
-
-            </div>
-        );
-    }
+export default function Alert(props) {
+    return (
+        <div className={"col-md-12 alert " + props.style}>
+            < strong > {props.message}</strong >
+        </div >
+    )
 }
-
-export default Alert;

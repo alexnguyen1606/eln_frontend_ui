@@ -1,0 +1,23 @@
+.selected{
+    background-color: blanchedalmond;
+    /* border-radius: 50%; */
+    width: 25px;
+    height: 25px;
+    text-align: center;
+}
+.item-page {
+    transition: 0.3s;
+    width: 25px;
+    height: 25px;
+    text-align: center;
+}
+.item-page:hover{
+    background-color: blanchedalmond;
+    transition: 0.3s;
+    /* border-radius: 50%; */
+    /* border:  black 1px solid; */
+    width: 25px;
+    height: 25px;
+    text-align: center;
+    
+}

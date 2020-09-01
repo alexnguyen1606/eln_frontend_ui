@@ -4,8 +4,8 @@ import axios from 'axios';
 
 var bearer = "Bearer " + TOKEN;
 const headers = {
+    // headers: { Authorization: bearer },
     headers: { Authorization: bearer, 'Access-Control-Allow-Origin': '*' },
-
 };
 export const create = (url, data) => {
     return axios.post(API_URL + url, data, headers);
@@ -28,3 +28,6 @@ export const get = (url) => {
 export const post = (url, data) => {
     return axios.post(API_URL + url, data, headers);
 };
+export const login = (url, data) => {
+    return axios.post(API_URL + url, data);
+}

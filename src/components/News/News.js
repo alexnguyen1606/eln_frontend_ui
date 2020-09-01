@@ -2,11 +2,13 @@ import React, { Component, Fragment } from 'react';
 import HomeBreadCrumb from '../common/HomeBreadCrumb';
 import ItemNews from './ItemNews';
 import TitleIntro from '../common/TitleIntro';
+import PreHeader from '../PreHeader';
 
 class News extends Component {
     render() {
         return (
             <Fragment>
+
                 <HomeBreadCrumb to="/news" label="Tin tức"></HomeBreadCrumb>
                 <TitleIntro title="Tin tức"></TitleIntro>
                 <div className="container">

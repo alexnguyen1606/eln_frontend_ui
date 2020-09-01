@@ -9,7 +9,7 @@ class HomeBreadCrumb extends Component {
                         <div className="col">
                             <nav className=" ">
                                 <Link to="/" exact className="breadcrumb-item">Trang chủ</Link>
-                                <NavLink activeClassName="active-bread-crumb" to={this.props.to} className="breadcrumb-item">{this.props.label}</NavLink>
+                                <NavLink exact={this.props.exact} activeClassName="active-bread-crumb" to={this.props.to} className="breadcrumb-item">{this.props.label}</NavLink>
                             </nav>
                         </div>
                     </div>

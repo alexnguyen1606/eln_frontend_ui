@@ -3,6 +3,7 @@ import CourseIntro from './Course/CourseIntro';
 import CompetitionIntro from './Competition/CompetitionIntro';
 import NewsIntro from './News/NewsIntro';
 import SliceShow from './SliceShow';
+import PreHeader from './PreHeader';
 
 class Home extends Component {
     render() {

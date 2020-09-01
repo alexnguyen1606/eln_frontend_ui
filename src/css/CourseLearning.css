@@ -1,0 +1,28 @@
+@media screen and (min-width: 576px){
+    /* .tab-learning {
+        display: block;
+    } */
+   
+    .content{
+        min-width: fit-content;
+    }
+    .clear{
+        display: none;
+    }
+}
+.content{
+    display: flex;
+    flex-direction: column;
+}
+@media screen and (max-width: 575px){
+    /* .tab-learning {
+        display: none;
+    } */
+    .clear{
+        display: block;
+    }
+}
+.tab li .nav-link.active{
+    background: #0060aa;
+    color: white !important;
+}

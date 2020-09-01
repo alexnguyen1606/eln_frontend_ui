@@ -10,9 +10,8 @@ class CourseIntro extends Component {
         }
     }
     componentDidMount() {
-        api.getAllWithPost("/api/course?size=6", {}).then((res) => {
-            let data = res.data.data;
-            console.log(data);
+        api.getAllWithPost("/api/course", {}).then((res) => {
+            let { data } = res.data;
             this.setState({ listCourse: data });
         })
             .catch((error) => {
@@ -32,7 +31,10 @@ class CourseIntro extends Component {
             <div className="container mt-4">
                 <TitleIntro title="Khóa học nổi bật"></TitleIntro>
                 <div className="row ">
+
                     {this.showCourse()}
+
+
                 </div>
             </div>
         );

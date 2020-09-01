@@ -1,65 +1,78 @@
-import React, { Component, Fragment } from 'react';
+import React, { Component, Fragment, useEffect, useState } from 'react';
 import ItemCourse from './ItemCourse';
-import { NavLink, Link } from 'react-router-dom'
+import { withRouter, useHistory } from 'react-router-dom';
 import HomeBreadCrumb from '../common/HomeBreadCrumb';
 import { create } from './../../apis/RootApi'
 import Category from './Category';
+import Search from '../common/Search';
+import Alert from './../common/Alert'
+import Paging from '../common/Paging';
 
-class Course extends Component {
-    constructor(props) {
-        super(props);
-        this.state = {
-            listCourse: [],
-            categoryId: null,
-            dataSearch: {}
-        }
+
+function Course(props) {
+    const [listCourse, setListCourse] = useState([]);
+    const [pageCount, setPageCount] = useState(0)
+    const [dataSearch, setDataSearch] = useState({})
+    const [activePage, setActivePage] = useState(props.match.params.page);
+    let history = useHistory();
+    useEffect(() => {
+        loadData();
+    }, [activePage])
+
+    const submitSearch = () => {
+        setActivePage(1)
+        loadData();
     }
-    componentDidMount() {
-        this.loadData();
+
+    const changeDataSearch = (value) => {
+        setDataSearch({ name: value })
     }
-    loadData = () => {
-        create("/api/course", this.state.dataSearch).then((res) => {
-            let data = res.data.data;
-            console.log(data);
-            this.setState({ listCourse: data });
+    const loadData = () => {
+        create("/api/course?page=" + activePage, dataSearch).then((res) => {
+            let { data } = res.data;
+            let { totalPage } = res.data;
+            let { currentPage } = res.data
+            setListCourse(data);
+            setActivePage(currentPage);
+            setPageCount(totalPage);
         })
             .catch((error) => {
                 console.log("error", error);
             });
     }
-    showCourse = () => {
-        let result = null
-        if (this.state.listCourse.length != 0) {
-            return this.state.listCourse.map((item, i) => {
+    const showCourse = () => {
+        if (listCourse.length != 0) {
+            return listCourse.map((item, i) => {
                 return <ItemCourse course={item} key={i}></ItemCourse>
             })
         }
-        return ""
+        return <Alert message="Không tìm thấy khóa học" style="alert-warning"></Alert>
 
     }
+    const handlePageClick = (e) => {
+        setActivePage(e.selected + 1)
+        let active = e.selected + 1;
+        history.push("/course/" + active)
+    }
+    return (
+        <Fragment>
+            <HomeBreadCrumb exact={true} to="/course/1" label="Khóa học"></HomeBreadCrumb>
+            <div className="container mt-4 ">
+                <div className="row">
+                    <Search changeDataSearch={(value) => changeDataSearch(value)} submitSearch={() => submitSearch()} ></Search>
+                    <div className="col-md-9 col-sm-12 row ">
 
-    render() {
-        return (
-            <Fragment>
-                <HomeBreadCrumb to="/course" label="Khóa học"></HomeBreadCrumb>
-                <div className="container mt-4 ">
-                    <div className="row">
-                        <div className="w-100 col-md-9 pt-4 pb-4 breadcrumb">
-                            <form className="form-group col-md-12 d-flex">
-                                <input type="email" class="form-control col-md-8" name="" id="" aria-describedby="emailHelpId" placeholder="Tên khóa học" />
-                                <button type="button" class="form-control col-md-3 btn btn-success ml-auto">Tìm kiếm</button>
-                            </form>
+                        {showCourse()}
 
-                        </div>
-                        <div className="col-md-9 col-sm-12  row">
-                            {this.showCourse()}
-                        </div>
-                        <Category></Category>
+                        <Paging activePage={activePage - 1} totalPage={pageCount} handlePageClick={handlePageClick}></Paging>
                     </div>
+                    <Category></Category>
+
                 </div>
-            </Fragment>
-        );
-    }
+            </div>
+        </Fragment>
+    );
+
 }
 
-export default Course;
+export default withRouter(Course);

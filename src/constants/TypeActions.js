@@ -1,0 +1,9 @@
+export const SHOW_TAB_LEARNING = "SHOW_TAB_LEARNING";
+export const SET_COURSE_WARE = "SET_COURSE_WARE";
+export const SET_DOCUMENT_DETAIL = "SET_DOCUMENT_DETAIL";
+export const SET_USER_INFO = "SET_USER_INFO";
+export const SET_TOKEN = "SET_TOKEN";
+export const LOGOUT = "LOGOUT";
+export const ADD_POSITION = "ADD_POSITION";
+export const SET_POSITION = "SET_POSITION";
+export const SET_COURSE_WARE_IDS = "SET_COURSE_WARE_IDS";
